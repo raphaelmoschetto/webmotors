@@ -119,6 +119,7 @@ body
 
 		#box
 		{
+			display:inline-block;
 			background:$white;
 			padding:22px 40px;
 			box-shadow: 1px 1px 1px rgba(174,174,181,.2);
@@ -284,6 +285,13 @@ body
 					color:#555;
 					border: 1px solid #ccc;
 					margin-right:5px;
+					text-align: left;
+
+					.caret
+					{
+						float:right;
+						margin-top:8px;
+					}
 
 				}
 

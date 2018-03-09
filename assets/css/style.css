@@ -66,6 +66,7 @@ body {
           background: #f89e00;
           color: #ffffff; }
     body main #box {
+      display: inline-block;
       background: #ffffff;
       padding: 22px 40px;
       box-shadow: 1px 1px 1px rgba(174, 174, 181, 0.2); }
@@ -157,7 +158,11 @@ body {
           background: #ffffff;
           color: #555;
           border: 1px solid #ccc;
-          margin-right: 5px; }
+          margin-right: 5px;
+          text-align: left; }
+          body main #box .dropdown .drop .caret {
+            float: right;
+            margin-top: 8px; }
         body main #box .dropdown .caract {
           min-width: 320px;
           margin-top: -1px;

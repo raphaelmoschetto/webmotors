@@ -46,7 +46,7 @@
 
 		<main>
 			
-			<div class="col-md-12" id="buttons">
+			<div class="col-md-12 col-sm-12" id="buttons">
 
 				<a class="btn btn-vender">Vender meu carro</a>
 				
@@ -69,7 +69,7 @@
 
 			</div>
 
-			<div id="box" class="col-md-12">
+			<div id="box" class="col-md-12 col-sm-12">
 				<form class="form-inline">
 
 					<div id="inputs" class="col-md-6">
@@ -105,18 +105,17 @@
 
 						  <div class="form-group">
 						  	
-						  		<select class="form-control marca">
-								      <option>Marca: Todas</option>
-									  <option>Teste</option>  
+						  		<select class="form-control marca" id="marca" onchange="injectModelo(this.value);">
+								      <option>Marca: Todas</option> 
 								</select>
 
 						  </div>
 
 						  <div class="form-group">
 						  	
-						  		<select class="form-control modelo">
+						  		<select class="form-control modelo" id="modelo">
 								      <option>Modelo: Todos</option>
-									  <option>Teste</option>  
+									    
 								</select>
 
 						  </div>
@@ -164,7 +163,7 @@
 						  </ul>
 						</div>
 
-						<div class="form-group">
+						<div class="form-group sm-total">
 						  	
 						  		<select class="form-control versao">
 								      <option>Versão: Todas</option>
@@ -177,10 +176,10 @@
 
 					<div class="col-md-12">
 
-						<a href="#" title="Busca Avançada" id="avancada">> Busca Avançada</a>
-
 						<input type="button" name="btnBuscar" id="btnBuscar" value="VER OFERTAS" class="pull-right">
 						<a href="#" title="Limpar Busca" id="limpar" class="pull-right">Limpar filtros</a>
+
+						<a class="botao" title="Busca Avançada" id="avancada">> Busca Avançada</a>
 
 					</div>
 
@@ -207,6 +206,30 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
 <script>
+
+	function injectModelo(value)
+	{
+
+		$.ajax(
+    		{
+    			url: "http://desafioonline.webmotors.com.br/api/OnlineChallenge/Model?MakeID="+value, 
+    			success: function(data){
+			        console.log(data);
+			        //console.log("teste");
+
+			        myObj = data;
+					for (x in myObj) {
+
+						$('#modelo').append($('<option value="'+myObj[x].ID+'">'+myObj[x].Name+'</option>'));
+
+					}
+
+    			},
+    			error: function(){
+    				console.log("Erro ao tentar acessar API OnlineChallenge.");
+    			},
+    		});
+	}
 	
 	$('.dropdown select').on({
 	    "click":function(e){
@@ -214,7 +237,35 @@
 	    }
 	});
 
+
+$(document).ready(function(){
+
+    	$.ajax(
+    		{
+    			url: "http://desafioonline.webmotors.com.br/api/OnlineChallenge/Make", 
+    			success: function(data){
+			        console.log(data);
+			        //console.log("teste");
+
+			        myObj = data;
+					for (x in myObj) {
+
+						$('#marca').append($('<option value="'+myObj[x].ID+'">'+myObj[x].Name+'</option>'));
+
+					}
+
+    			},
+    			error: function(){
+    				console.log("Erro ao tentar acessar API OnlineChallenge.");
+    			},
+    		});
+
+});
 </script>
+
+<div id="div1"><h2>Let jQuery AJAX Change This Text</h2></div>
+
+<button>Get External Content</button>
 
 </body>
 </html>
