@@ -1,0 +1,220 @@
+<!doctype html>
+
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+  <title>Página de Teste Webmotors</title>
+  <meta name="description" content="Esta é uma Página de Teste Webmotors">
+  <meta name="author" content="Arnaldo Raphael Moschetto">
+
+  <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" crossorigin="anonymous">
+
+
+<!-- CSS custom -->
+<link href="assets/css/style.css" type="text/css" rel="stylesheet" />
+
+<!-- CSS Media Queries -->
+<link href="assets/css/media.queries.css" type="text/css" rel="stylesheet" />
+
+
+  <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+
+<div class="container fix-width">
+
+	<div class="row">
+	
+		<header class="navbar-header">
+			<a class="navbar-brand" href="/" >
+				<div class="box_logo">
+					<img src="assets/images/logo-webmotors@2x.png" class="img-responsive">
+				</div>
+			</a>
+		</header>
+
+		<main>
+			
+			<div class="col-md-12" id="buttons">
+
+				<a class="btn btn-vender">Vender meu carro</a>
+				
+				<a href="#" class="active">
+					
+					<i class="car"></i>
+					<h1>
+						COMPRAR <span>CARROS</span>
+					</h1>
+
+				</a>
+				<a href="#">
+					<i class="bike"></i>
+					<h1>
+						COMPRAR <span>MOTOS</span>
+					</h1>
+				</a>
+
+  				
+
+			</div>
+
+			<div id="box" class="col-md-12">
+				<form class="form-inline">
+
+					<div id="inputs" class="col-md-6">
+						<div class="form-check col-md-3 col-xs-6">
+							<label>
+								<input type="checkbox" name="check" checked> <span class="label-text">Novos</span>
+							</label>
+						</div>
+
+						<div class="form-check col-md-3 col-xs-6">
+				        	<label>
+								<input type="checkbox" name="check" checked> <span class="label-text">Usados</span>
+							</label>
+						</div>
+			    	</div>
+
+
+			    	<div class="col-md-12">
+
+						  <div class="form-group">
+							    <label id="onde" class="hidden-xs"><i class="map"></i> <span>Onde:</span></label>
+							    <input type="text" class="form-control cidade" placeholder="Ex.: São Paulo">
+							    <select class="form-control raio">
+								      <option>Raio</option>
+									  <option>25km</option>
+									  <option>50km</option>
+									  <option>100km</option>
+									  <option>150km</option>
+									  <option>200km</option>
+									  <option>250km</option>
+								</select>
+						  </div>
+
+						  <div class="form-group">
+						  	
+						  		<select class="form-control marca">
+								      <option>Marca: Todas</option>
+									  <option>Teste</option>  
+								</select>
+
+						  </div>
+
+						  <div class="form-group">
+						  	
+						  		<select class="form-control modelo">
+								      <option>Modelo: Todos</option>
+									  <option>Teste</option>  
+								</select>
+
+						  </div>
+
+					  
+					</div>
+
+					<div class="col-md-12">
+
+						<div class="dropdown">
+						  <button class="btn drop dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+						    Ano Desejado
+						    <span class="caret"></span>
+						  </button>
+						  <ul class="dropdown-menu caract" aria-labelledby="dropdownMenu1">
+						    <li class="col-md-6">
+						    	<select class="form-control modelo">
+								      <option>De: Mín</option>
+									  <option>1999</option>  
+								</select>
+							</li>
+						    <li class="col-md-6">
+						    	<select class="form-control modelo">
+								      <option>Até: Máx</option>
+									  <option>2018</option>  
+								</select>
+							</li>
+						    
+						  </ul>
+						</div>
+
+						<div class="dropdown">
+						  <button class="btn drop dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+						    Faixa de Preço
+						    <span class="caret"></span>
+						  </button>
+						  <ul class="dropdown-menu caract" aria-labelledby="dropdownMenu1">
+						    <li class="col-md-6">
+						    	 <input type="text" class="form-control" placeholder="De: Mín">
+							</li>
+						    <li class="col-md-6">
+						    	 <input type="text" class="form-control" placeholder="De: Máx">
+							</li>
+						    
+						  </ul>
+						</div>
+
+						<div class="form-group">
+						  	
+						  		<select class="form-control versao">
+								      <option>Versão: Todas</option>
+									  <option>Teste</option>  
+								</select>
+
+						</div>
+
+					</div>
+
+					<div class="col-md-12">
+
+						<a href="#" title="Busca Avançada" id="avancada">> Busca Avançada</a>
+
+						<input type="button" name="btnBuscar" id="btnBuscar" value="VER OFERTAS" class="pull-right">
+						<a href="#" title="Limpar Busca" id="limpar" class="pull-right">Limpar filtros</a>
+
+					</div>
+
+					</form>
+
+					
+			    
+			</div>
+
+		</main>
+
+	</div>
+
+</div>
+
+
+
+  
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script>
+	
+	$('.dropdown select').on({
+	    "click":function(e){
+	      e.stopPropagation();
+	    }
+	});
+
+</script>
+
+</body>
+</html>

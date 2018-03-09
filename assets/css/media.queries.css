@@ -1,0 +1,90 @@
+/*==========  Non-Mobile First Method  ==========*/
+
+    /* Large Devices, Wide Screens */
+    @media only screen and (max-width : 1200px) {
+
+    }
+
+    /* Medium Devices, Desktops */
+    @media only screen and (max-width : 992px) {
+
+        .fix-width{
+            width: auto!important;
+        }
+
+        main
+        {
+            width:100%!important;
+            height:auto!important;
+        }
+
+    }
+
+    /* Small Devices, Tablets */
+    @media only screen and (max-width : 768px) {
+
+        body main #box
+        {
+            padding:0 ;
+        }
+
+        #buttons
+        {
+            text-align: center;
+        }
+
+        #buttons a, #box .form-group select.marca, body main #box .form-group select.modelo
+        {
+            width:100%;
+        }
+
+        #buttons a
+        {
+            padding:0;
+        }
+
+        #buttons a.btn-vender
+        {
+            float:none!important;
+            width: 100%;
+            margin-bottom:40px;
+        }
+
+        #box #inputs
+        {
+            padding-top:20px;
+        }
+
+        #box #inputs .form-check
+        {
+            text-align: center;
+            margin-bottom:10px;
+        }
+
+        #box .form-group input.cidade
+        {
+            border:1px solid #ccc!important;
+            margin-bottom:15px;
+            border-radius:4px!important;
+            
+        }
+
+        #box .form-group select.raio, #box .form-group select.marca, #box .form-group select.modelo
+        {
+            margin-left:0!important;
+            border-radius:4px!important;
+        }
+
+
+
+    }
+
+    /* Extra Small Devices, Phones */ 
+    @media only screen and (max-width : 480px) {
+
+    }
+
+    /* Custom, iPhone Retina */ 
+    @media only screen and (max-width : 320px) {
+
+    }

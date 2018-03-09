@@ -1,0 +1,193 @@
+body {
+  font-family: 'Arial',sans-serif;
+  color: #4d4d4d;
+  font-weight: 400;
+  line-height: 1;
+  background: #f4f4f4; }
+  body .fix-width {
+    width: 933px; }
+  body .navbar-header .box_logo {
+    max-width: 216px;
+    max-height: 48px; }
+  body main {
+    display: inline-block;
+    width: 933px;
+    height: 312px;
+    margin: 40px auto; }
+    body main #buttons {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 0; }
+      body main #buttons a {
+        color: #929292;
+        font-size: 11px;
+        line-height: 20px;
+        float: left;
+        padding: 10px 20px;
+        border-bottom: 1px solid #929292;
+        margin: 1px 0 0 0; }
+        body main #buttons a:hover {
+          text-decoration: none; }
+        body main #buttons a.active {
+          border-bottom: 3px solid #cc2929;
+          margin-top: 0; }
+        body main #buttons a h1 {
+          display: inline-block;
+          margin: 0;
+          font-size: 11px; }
+        body main #buttons a i {
+          position: relative;
+          display: inline-block;
+          width: 40px;
+          height: 22px;
+          margin-right: 10px;
+          background-repeat: no-repeat; }
+          body main #buttons a i.car {
+            top: 10px;
+            background-image: url("../svg/car_icon_red.svg"); }
+          body main #buttons a i.bike {
+            background-image: url("../svg/bike_icon_gray.svg"); }
+        body main #buttons a span {
+          color: #cc2929;
+          font-size: 22px;
+          display: block; }
+      body main #buttons .btn-vender {
+        float: right;
+        border: 2px solid #f89e00;
+        width: 200px;
+        height: 40px;
+        line-height: 38px;
+        padding: 0 13px;
+        color: #f89e00;
+        background: none;
+        font-size: 15px;
+        font-weight: bold; }
+        body main #buttons .btn-vender:hover {
+          background: #f89e00;
+          color: #ffffff; }
+    body main #box {
+      background: #ffffff;
+      padding: 22px 40px;
+      box-shadow: 1px 1px 1px rgba(174, 174, 181, 0.2); }
+      body main #box #inputs .form-check {
+        padding: 0;
+        /*Check box*/ }
+        body main #box #inputs .form-check input[type="checkbox"], body main #box #inputs .form-check input[type="radio"] {
+          position: absolute;
+          right: 9000px; }
+        body main #box #inputs .form-check input[type="checkbox"] + .label-text:before {
+          content: "\f096";
+          font-family: "FontAwesome";
+          speak: none;
+          font-style: normal;
+          font-weight: normal;
+          font-variant: normal;
+          text-transform: none;
+          line-height: 1;
+          -webkit-font-smoothing: antialiased;
+          width: 1em;
+          display: inline-block;
+          margin-right: 5px; }
+        body main #box #inputs .form-check input[type="checkbox"]:checked + .label-text:before {
+          content: "\f14a";
+          color: #cc2929;
+          animation: effect 250ms ease-in; }
+        body main #box #inputs .form-check input[type="checkbox"]:disabled + .label-text {
+          color: #aaa; }
+          body main #box #inputs .form-check input[type="checkbox"]:disabled + .label-text:before {
+            content: "\f0c8";
+            color: #929292; }
+        body main #box #inputs .form-check .label-text {
+          font-weight: normal;
+          color: #929292;
+          font-size: 14px;
+          cursor: pointer; }
+@keyframes effect {
+  0% {
+    transform: scale(0); }
+  25% {
+    transform: scale(1.3); }
+  75% {
+    transform: scale(1.4); }
+  100% {
+    transform: scale(1); } }
+      body main #box .form-group label {
+        font-weight: normal; }
+        body main #box .form-group label#onde {
+          border: 1px solid #ccc;
+          padding: 5px;
+          position: relative;
+          top: 5px;
+          margin: 0 -4px 0 0;
+          border-right: 0;
+          border-top-left-radius: 4px;
+          border-bottom-left-radius: 4px; }
+          body main #box .form-group label#onde span {
+            position: relative;
+            top: -4px; }
+        body main #box .form-group label i.map {
+          background: url("../svg/pin_icon.svg") no-repeat;
+          display: inline-block;
+          height: 20px;
+          width: 20px; }
+      body main #box .form-group input.cidade {
+        border-left: 0;
+        border-right: 0;
+        border-radius: 0;
+        font-weight: bold; }
+      body main #box .form-group select {
+        cursor: pointer; }
+        body main #box .form-group select.raio {
+          border-top-left-radius: 0;
+          border-bottom-left-radius: 0;
+          border-top-right-radius: 4;
+          border-bottom-right-radius: 4;
+          margin-left: -4px; }
+        body main #box .form-group select.marca, body main #box .form-group select.modelo {
+          width: 213px;
+          margin: 5px 0 0 6px; }
+        body main #box .form-group select.versao {
+          width: 436px;
+          margin-left: 1px; }
+      body main #box .dropdown {
+        display: inline-block;
+        margin-top: 14px; }
+        body main #box .dropdown .drop {
+          width: 184px;
+          background: #ffffff;
+          color: #555;
+          border: 1px solid #ccc;
+          margin-right: 5px; }
+        body main #box .dropdown .caract {
+          min-width: 320px;
+          margin-top: -1px;
+          padding: 10px 0; }
+        body main #box .dropdown li {
+          display: inline-block; }
+          body main #box .dropdown li select, body main #box .dropdown li input {
+            width: 100%; }
+      body main #box #btnBuscar {
+        width: 319px;
+        background: #cc2929;
+        color: #ffffff;
+        border: none;
+        padding: 17px 0;
+        font-size: 18px;
+        font-weight: bold;
+        border-radius: 4px;
+        margin-top: 21px; }
+        body main #box #btnBuscar:hover {
+          background: #f54747; }
+      body main #box a#avancada {
+        float: left;
+        color: #cc2929;
+        font-weight: bold;
+        font-size: 14px;
+        margin: 30px 0 0 0; }
+      body main #box a#limpar {
+        margin: 38px 30px 0 0;
+        color: #929292;
+        font-weight: normal;
+        font-size: 15px; }
+
+/*# sourceMappingURL=style.css.map */
