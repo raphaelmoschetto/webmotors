@@ -113,7 +113,7 @@
 
 						  <div class="form-group">
 						  	
-						  		<select class="form-control modelo" id="modelo">
+						  		<select class="form-control modelo" id="modelo" disabled>
 								      <option>Modelo: Todos</option>
 									    
 								</select>
@@ -209,7 +209,6 @@
 
 	function injectModelo(value)
 	{
-
 		$.ajax(
     		{
     			url: "http://desafioonline.webmotors.com.br/api/OnlineChallenge/Model?MakeID="+value, 
@@ -217,6 +216,8 @@
 			        console.log(data);
 			        //console.log("teste");
 
+			        $('#modelo').html("<option>Modelo: Todos</option>");
+			        $('#modelo').prop('disabled', false);
 			        myObj = data;
 					for (x in myObj) {
 
