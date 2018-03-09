@@ -106,7 +106,7 @@
 						  <div class="form-group">
 						  	
 						  		<select class="form-control marca" id="marca" onchange="injectModelo(this.value);">
-								      <option>Marca: Todas</option> 
+								      <option value="">Marca: Todas</option> 
 								</select>
 
 						  </div>
@@ -114,7 +114,7 @@
 						  <div class="form-group">
 						  	
 						  		<select class="form-control modelo" id="modelo" disabled>
-								      <option>Modelo: Todos</option>
+								      <option value="">Modelo: Todos</option>
 									    
 								</select>
 
@@ -209,6 +209,14 @@
 
 	function injectModelo(value)
 	{
+		if(value == "") 
+		{ 
+			$('#modelo').prop('disabled', 'disabled');
+			$('#modelo').html("<option value=''>Modelo: Todos</option>");
+		}
+
+		console.log(value);
+
 		$.ajax(
     		{
     			url: "http://desafioonline.webmotors.com.br/api/OnlineChallenge/Model?MakeID="+value, 
@@ -216,7 +224,7 @@
 			        console.log(data);
 			        //console.log("teste");
 
-			        $('#modelo').html("<option>Modelo: Todos</option>");
+			        $('#modelo').html("<option value=''>Modelo: Todos</option>");
 			        $('#modelo').prop('disabled', false);
 			        myObj = data;
 					for (x in myObj) {
@@ -227,7 +235,7 @@
 
     			},
     			error: function(){
-    				console.log("Erro ao tentar acessar API OnlineChallenge.");
+    				console.log("Erro ao tentar acessar API OnlineChallenge. Não há valor de ID para este acesso.");
     			},
     		});
 	}
