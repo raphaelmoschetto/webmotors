@@ -22,7 +22,7 @@
 <link href="assets/css/style.css" type="text/css" rel="stylesheet" />
 
 <!-- CSS Media Queries -->
-<link href="assets/css/media.queries.css" type="text/css" rel="stylesheet" />
+<link href="assets/css/media.queries.min.css" type="text/css" rel="stylesheet" />
 
 
   <!--[if lt IE 9]>
@@ -105,7 +105,7 @@
 
 						  <div class="form-group">
 						  	
-						  		<select class="form-control marca" id="marca" name="marca" onchange="inject(this.value, this.name);">
+						  		<select class="form-control marca" id="marca" name="marca" onchange="webservice(this.value, this.name);">
 								      <option value="">Marca: Todas</option> 
 								</select>
 
@@ -113,7 +113,7 @@
 
 						  <div class="form-group">
 						  	
-						  		<select class="form-control modelo" id="modelo" name="modelo" onchange="inject(this.value, this.name);">
+						  		<select class="form-control modelo" id="modelo" name="modelo" onchange="webservice(this.value, this.name);">
 								      <option value="">Modelo: Todos</option>   
 								</select>
 
@@ -164,7 +164,7 @@
 
 						<div class="form-group sm-total">
 						  	
-						  		<select class="form-control versao">
+						  		<select class="form-control versao" name="versao" id="versao">
 								      <option>Versão: Todas</option>
 									  <option>Teste</option>  
 								</select>
@@ -178,7 +178,7 @@
 						<input type="button" name="btnBuscar" id="btnBuscar" value="VER OFERTAS" class="pull-right">
 						<a href="#" title="Limpar Busca" id="limpar" class="pull-right">Limpar filtros</a>
 
-						<a class="botao" title="Busca Avançada" id="avancada">> Busca Avançada</a>
+						<a href="#" class="botao" title="Busca Avançada" id="avancada">> Busca Avançada</a>
 
 					</div>
 
@@ -204,96 +204,27 @@
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
+
+
+	<script src="assets/js/webservice.min.js"></script>
+
 <script>
-
-	// FUNCTION USED TO CHANGE SELECT (API VALUES) - #MARCA #MODELO #VEROES
-	function inject(value=null, request=null)
-	{
-
-		console.log(value,request)
-		
-		//IF FUNCTION STARTS ON DOCUMENT READY - GET URL AJAX -> MAKE
-		if(value==null && request==null)
-			urlajax = "http://desafioonline.webmotors.com.br/api/OnlineChallenge/Make";
-
-		//IF FUNCTION STARTS CHOOSING SELECT #MARCA - GET URL AJAX -> MODEL WITH MAKER ID
-		if(value != "" && value != null && request=="marca")
-			urlajax = "http://desafioonline.webmotors.com.br/api/OnlineChallenge/Model?MakeID="+value;
-
-		//IF FUNCTION STARTS CHOOSING SELECT #MODELO - GET URL AJAX -> VERSION WITH MODEL ID
-		if(value != "" && value != null && request=="modelo")
-			urlajax = "hthttp://desafioonline.webmotors.com.br/api/OnlineChallenge/Version?ModelID="+value;
-
-		//IF FUNCTION STARTS ON DOCUMENT READY OR CHOOSING SELECT #MARCA TO EMPTY OPTION
-		if((value == null || value=="") && (request == null || request == "marca")) 
-			{ 
-				$('#modelo').prop('disabled', 'disabled');
-				$('#modelo').html("<option value=''>Modelo: Todos</option>");
-			}
-
-			if(urlajax != "") {
-				$.ajax(
-	    		{
-	    			url: urlajax, 
-	    			success: function(data){
-				        //console.log(data);
-				        //console.log("teste");
-
-				        console.log(urlajax);
-
-				        if(value == null && request==null){
-
-				        	myObj = data;
-							for (x in myObj) {
-
-								$('#marca').append($('<option value="'+myObj[x].ID+'">'+myObj[x].Name+'</option>'));
-
-							}
-
-				        }
-
-				        if(value != null){
-				        	//console.log(value);
-					        $('#modelo').html("<option value=''>Modelo: Todos</option>");
-					        $('#modelo').prop('disabled', false);
-					        myObj = data;
-							for (x in myObj) {
-
-								$('#modelo').append($('<option value="'+myObj[x].ID+'">'+myObj[x].Name+'</option>'));
-
-							}
-						}
-
-						urlajax = "";
-
-	    			},
-	    			error: function(){
-	    				console.log("Erro ao tentar acessar API OnlineChallenge.");
-	    			},
-	    		});
-			}
-		
-	}
 
 	$(document).ready(function(){
 
-    	inject();
+		//DO THE AJAX FUNCTION
+    	webservice();
 
 	});
 	
+	//STOP ACTION WHEN CLICK ON DROPDOWN
 	$('.dropdown select').on({
 	    "click":function(e){
 	      e.stopPropagation();
 	    }
 	});
 
-
-
 </script>
-
-<div id="div1"><h2>Let jQuery AJAX Change This Text</h2></div>
-
-<button>Get External Content</button>
 
 </body>
 </html>
