@@ -24,7 +24,6 @@
 <!-- CSS Media Queries -->
 <link href="assets/css/media.queries.min.css" type="text/css" rel="stylesheet" />
 
-
   <!--[if lt IE 9]>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
   <![endif]-->
@@ -194,8 +193,6 @@
 
 </div>
 
-
-
   
 <script
   src="https://code.jquery.com/jquery-3.3.1.min.js"
@@ -206,23 +203,26 @@
 
 
 
-	<script src="assets/js/webservice.min.js"></script>
+<script src="assets/js/webservice.js"></script>
 
 <script>
 
-	$(document).ready(function(){
+	document.addEventListener('DOMContentLoaded', function() {
 
 		//DO THE AJAX FUNCTION
     	webservice();
 
 	});
 	
+
 	//STOP ACTION WHEN CLICK ON DROPDOWN
-	$('.dropdown select').on({
-	    "click":function(e){
-	      e.stopPropagation();
-	    }
-	});
+	var dropdowns = document.querySelectorAll('.dropdown select');
+
+	for (var i = 0; i < dropdowns.length; i++) {
+	    dropdowns[i].addEventListener('click', function(e) {
+	        e.stopPropagation();
+	    });
+	}
 
 </script>
 

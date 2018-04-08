@@ -1,95 +1,115 @@
 // FUNCTION USED TO CHANGE SELECT (API VALUES) - #MARCA #MODELO #VERSAO
-	function webservice(value=null, request=null)
+	function webservice(value=null, selector=null)
 	{
-
-		//console.log(value,request)
-		
-		//IF FUNCTION STARTS ON DOCUMENT READY - GET URL AJAX -> MAKE
-		if(value==null && request==null)
-			urlajax = "http://desafioonline.webmotors.com.br/api/OnlineChallenge/Make";
-
-		//IF FUNCTION STARTS CHOOSING SELECT #MARCA - GET URL AJAX -> MODEL WITH MAKER ID
-		if(value != "" && value != null && request=="marca")
-			urlajax = "http://desafioonline.webmotors.com.br/api/OnlineChallenge/Model?MakeID="+value;
-
-		//IF FUNCTION STARTS CHOOSING SELECT #MODELO - GET URL AJAX -> VERSION WITH MODEL ID
-		if(value != "" && value != null && request=="modelo")
-			urlajax = "http://desafioonline.webmotors.com.br/api/OnlineChallenge/Version?ModelID="+value;
-
+	
 		//IF FUNCTION STARTS ON DOCUMENT READY OR CHOOSING SELECT #MARCA TO EMPTY OPTION
-		if(value == null || (value == "" && request == "marca")) 
+		if(value == null || (value == "" && selector == "marca")) 
 			{ 
-				console.log(value,request);
-				$('#modelo').prop('disabled', 'disabled');
-				$('#modelo').html("<option value=''>Modelo: Todos</option>");
-				$('#versao').prop('disabled', 'disabled');
-				$('#versao').html("<option value=''>Versão: Todas</option>");
+				document.querySelector('#modelo').disabled = true;
+    			document.querySelector('#modelo').innerHTML = "<option value=''>Modelo: Todos</option>";
+				document.querySelector('#versao').disabled = true;
+				document.querySelector('#versao').innerHTML = "<option value=''>Versão: Todas</option>";
+			}
+		// IF CHOOSING SELECT #MARCA THEN SELECT #VERSAO IS DISABLED
+		if(selector == "marca")
+			{
+				document.querySelector('#versao').disabled = true;
+				document.querySelector('#versao').innerHTML = "<option value=''>Versão: Todas</option>";
 			}
 
-		//IF FUNCTION STARTS ON DOCUMENT READY OR CHOOSING SELECT #MARCA TO EMPTY OPTION
-		if((value == null || value=="") && (request == null || request == "modelo")) 
-			{ 
-				$('#versao').prop('disabled', 'disabled');
-				$('#versao').html("<option value=''>Versão: Todas</option>");
-			}
+		// DO DE XML REQUEST TO API
+		var request = new XMLHttpRequest();
+		request.open('GET', 'assets/php/proxy.php?selector='+selector+'&value='+value, true);
 
-			console.log(urlajax);
+		request.onload = function() {
+		  if (request.status >= 200 && request.status < 400) {
 
-			if(urlajax != "") {
-				$.ajax(
-	    		{
-	    			url: urlajax, 
-	    			success: function(data){
-				        //console.log(data);
-				        //console.log("teste");
-				        console.log(urlajax);
+		    var resp = request.responseText;
 
-				        //DO SELECT OF MAKERS
-				        if(value == null && request==null){
+		   		//TRANSFORM STRING TO JSON OBJ
+		        var obj = JSON.parse(resp);
 
-				        	myObj = data;
-							for (x in myObj) {
+		        //DO SELECT OF MAKERS
+		        if(value == null && selector==null){
 
-								$('#marca').append($('<option value="'+myObj[x].ID+'">'+myObj[x].Name+'</option>'));
+		        	obj.map(function(myData) {
+					    
+					    // Get the element you want to add your new element
+						var target = document.querySelector('#marca');
 
-							}
+						// Create the new element
+						var option = document.createElement('option');
 
-				        }
+						// Add content to the new element
+						option.innerHTML = myData.Name;
+						option.value = myData.ID;
 
-				        // DO SELECT OF MODELS 
-				        if(value != null && request == "marca"){
-				        	//console.log(value);
-					        $('#modelo').html("<option value=''>Modelo: Todos</option>");
-					        $('#modelo').prop('disabled', false);
-					        myObj = data;
-							for (x in myObj) {
+						// Insert the element 
+						return target.appendChild(option);
 
-								$('#modelo').append($('<option value="'+myObj[x].ID+'">'+myObj[x].Name+'</option>'));
+					});
 
-							}
-						}
+		        }
 
-						// DO SELECT OF VERSION
-						if(value != null && request == "modelo"){
-				        	console.log(value);
-					        $('#versao').html("<option value=''>Versão: Todas</option>");
-					        $('#versao').prop('disabled', false);
-					        myObj = data;
-							for (x in myObj) {
+		        // DO SELECT OF MODELS 
+		        if(value != null && selector == "marca"){
+		        	//console.log(value);
 
-								$('#versao').append($('<option value="'+myObj[x].ID+'">'+myObj[x].Name+'</option>'));
+		        	document.querySelector('#modelo').disabled = false;
+    				document.querySelector('#modelo').innerHTML = "<option value=''>Modelo: Todos</option>";
+			        
+			        obj.map(function(myData) {
 
-							}
-						}
+						// Get the element you want to add your new element
+						var target = document.querySelector('#modelo');
 
-						//RESET URLAJAX TO NEXT 
-						urlajax = "";
+						// Create the new element
+						var option = document.createElement('option');
 
-	    			},
-	    			error: function(){
-	    				console.log("Erro ao tentar acessar API OnlineChallenge.");
-	    			}
-	    		});
-			}
-		
+						// Add content to the new element
+						option.innerHTML = myData.Name;
+						option.value = myData.ID;
+
+						// Insert the element 
+						return target.appendChild(option);
+
+					});
+				}
+
+				// DO SELECT OF VERSION
+				if(value != null && selector == "modelo"){
+		        	//console.log(value);
+			       	document.querySelector('#versao').disabled = false;
+    				document.querySelector('#versao').innerHTML = "<option value=''>Versão: Todas</option>";
+			        
+			        obj.map(function(myData) {
+
+						// Get the element you want to add your new element
+						var target = document.querySelector('#versao');
+
+						// Create the new element
+						var option = document.createElement('option');
+
+						// Add content to the new element
+						option.innerHTML = myData.Name;
+						option.value = myData.ID;
+
+						// Insert the element 
+						return target.appendChild(option);
+
+					});
+				}
+
+		  } else {
+		    console.log("Erro ao tentar acessar API OnlineChallenge.");
+		  }
+		};
+
+		request.onerror = function() {
+		  	console.log("Erro ao tentar acessar API OnlineChallenge.");
+		};
+
+		request.send();
+
+
 	}
